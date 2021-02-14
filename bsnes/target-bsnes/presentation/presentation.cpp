@@ -183,7 +183,7 @@ auto Presentation::create() -> void {
     .setName("SameBoy")
     .setLogo(Resource::SameBoy)
     .setDescription("Super Game Boy emulator")
-    .setVersion("0.13.1")
+    .setVersion("0.13.6")
     .setCopyright("Lior Halphon")
     .setLicense("MIT")
     .setWebsite("https://sameboy.github.io")
@@ -218,6 +218,10 @@ auto Presentation::create() -> void {
   iconCanvas.setDroppable();
   iconCanvas.onDrop([&](auto locations) { onDrop(locations); });
 
+  iconPadding.setColor({0, 0, 0});
+  iconPadding.setDroppable();
+  iconPadding.onDrop([&](auto locations) { onDrop(locations); });
+
   if(!settings.general.statusBar) layout.remove(statusLayout);
 
   auto font = Font().setBold();
@@ -250,7 +254,6 @@ auto Presentation::create() -> void {
   });
 
   setTitle({"bsnes v", Emulator::Version});
-  setBackgroundColor({0, 0, 0});
   resizeWindow();
   setAlignment(Alignment::Center);
 
@@ -466,6 +469,20 @@ auto Presentation::updateRecentGames() -> void {
     } else {
       index++;
     }
+  }
+
+  //replace any empty option strings with "Auto", to work around a bug in bsnes
+  //v115 and below.
+  for(auto entry : settings[{"Game/Recent"}]) {
+    auto old_games = entry.text();
+    if(!old_games) continue;
+    vector<string> new_games;
+    for(auto& game : old_games.split("|")) {
+        auto parts = game.split(";", 1L);
+        if(parts[0] == "") parts[0] = "Auto";
+        new_games.append(parts.merge(";"));
+    }
+    entry.setValue(new_games.merge("|"));
   }
 
   //update list

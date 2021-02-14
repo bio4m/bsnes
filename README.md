@@ -1,10 +1,10 @@
 bsnes
 =====
 
-![bsnes logo](https://byuu.org/images/bsnes/github/byuu-bsnes-logo.png)
+![bsnes logo](bsnes/target-bsnes/resource/logo.png)
 
 bsnes is a multi-platform Super Nintendo (Super Famicom) emulator, originally
-developed by [byuu](https://byuu.org/about), which focuses on performance,
+developed by [Near](https://near.sh), which focuses on performance,
 features, and ease of use.
 
 Unique Features
@@ -70,6 +70,6 @@ Nightly Builds
 Preview
 -------
 
-![bsnes user interface](https://byuu.org/images/bsnes/github/byuu-bsnes-user-interface.png)
-![bsnes running Bahamut Lagoon](https://byuu.org/images/bsnes/github/byuu-bsnes-bahamut-lagoon.png)
-![bsnes running Tengai Makyou Zero](https://byuu.org/images/bsnes/github/byuu-bsnes-tengai-makyou-zero.png)
+![bsnes user interface](.assets/user-interface.png)
+![bsnes running Bahamut Lagoon](.assets/bahamut-lagoon.png)
+![bsnes running Tengai Makyou Zero](.assets/tengai-makyou-zero.png)
